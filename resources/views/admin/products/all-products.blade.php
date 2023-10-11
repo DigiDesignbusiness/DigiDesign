@@ -14,7 +14,7 @@
                     e.preventDefault();
 
                     var delete_id = $(this).closest("tr").find('.delete_val_id').val();
-                    swal({.
+                    swal({
                             title: "Are you sure?",
                             text: "Once deleted, you will not be able to recover this imaginary file!",
                             icon: "warning",
@@ -25,12 +25,12 @@
                             if (willDelete) {
                                 var data = {
                                     "_token": $('input[name=_token]').val(),
-                                    "id": delete_id
+                                    "id": delete_id,
                                 };
 
                                 $.ajax({
                                     type: "DELETE",
-                                    url: "/admin/delete-product/" + delete_id,
+                                    url: '/admin/delete-product/' + delete_id,
                                     data: data,
                                     success: function(response) {
                                         swal(response.status, {
@@ -38,12 +38,12 @@
                                             })
                                             .then((result) => {
                                                 location.reload();
-                                            })
+                                            });
                                     }
                                 });
                             }
                         });
-                })
+                });
             });
         </script>
     @endsection

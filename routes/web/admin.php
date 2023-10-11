@@ -54,6 +54,10 @@ Route::post('/users/{id}/permissions', [UserPermissionController::class, 'storeU
 Route::get('all-products', [ProductController::class, 'allProducts'])->name('all-products');
 Route::get('create-product', [ProductController::class, 'createProduct'])->name('create-product');
 Route::post('store-product', [ProductController::class, 'storeProduct'])->name('store-product');
-Route::delete('delete-product', [ProductController::class, 'deleteProduct'])->name('delete-product');
-Route::get('edit-product', [ProductController::class, 'editProduct'])->name('edit-product');
-Route::get('update-product', [ProductController::class, 'updateProduct'])->name('update-product');
+Route::delete('/delete-product/{id}', [ProductController::class, 'deleteProduct'])->name('delete-product');
+Route::get('edit-product/{id}', [ProductController::class, 'editProduct'])->name('edit-product');
+Route::put('update-product/{id}', [ProductController::class, 'updateProduct'])->name('update-product');
+
+//order management
+Route::get('all-orders', [AdminController::class, 'allOrders'])->name('all-orders');
+Route::get('delivered/{id}', [AdminController::class, 'delivered'])->name('delivered');
